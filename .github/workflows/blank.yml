@@ -25,4 +25,4 @@ jobs:
   
       - name: Run a multi-line script
         run: |
-          echo "$ASERTO_PUSH_KEY"
+          echo "foo $ASERTO_PUSH_KEY bar"
