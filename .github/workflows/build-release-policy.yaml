@@ -21,13 +21,13 @@ jobs:
         file: .github/config.yaml
 
     - name: List Sver Tags
-      uses: aserto-dev/sver-action@v0
+      uses: aserto-dev/sver-action@v1
       id: "sver"
       with:
         docker_image: ${{ steps.config.outputs.repo }}
         docker_registry: ${{ steps.config.outputs.server }}
         docker_username: ${{ steps.config.outputs.username }}
-        docker_password: ${{ secrets.ASERTO_API_KEY }}
+        docker_password: ${{ secrets.ASERTO_PUSH_KEY }}
 
     - name: Calculate image tags
       id: "tags"
@@ -43,7 +43,7 @@ jobs:
       uses: opcr-io/policy-login-action@v2
       with:
         username: ${{ steps.config.outputs.username }}
-        password: ${{ secrets.ASERTO_API_KEY }}
+        password: ${{ secrets.ASERTO_PUSH_KEY }}
         server: ${{ steps.config.outputs.server }}
 
     - name: Policy Build
